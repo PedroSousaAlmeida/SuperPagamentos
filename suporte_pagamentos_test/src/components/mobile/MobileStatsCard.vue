@@ -1,12 +1,65 @@
 <script setup>
+import { ref } from "vue";
 import { Filter } from "lucide-vue-next";
+import VueApexCharts from "vue3-apexcharts";
 
-// Dados simulados do gráfico
-const chartData = Array.from({ length: 30 }, (_, i) => ({
+// Dados do gráfico (30 dias para mobile)
+const revenueData = Array.from({ length: 30 }, (_, i) => ({
   day: i + 1,
-  value: Math.random() * 100,
-  highlighted: Math.random() > 0.7,
+  value: Math.random() * 200000 + 50000,
 }));
+
+const chartOptions = ref({
+  chart: {
+    type: "bar",
+    height: 140,
+    toolbar: { show: false },
+    zoom: { enabled: false },
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 4,
+      columnWidth: "8px",
+      distributed: true,
+    },
+  },
+  dataLabels: { enabled: false },
+  legend: { show: false },
+  colors: revenueData.map((d) => (d.value > 50000 ? "#2FCD66" : "#E5E7EB")),
+  fill: {
+    type: revenueData.map((d) => (d.value > 50000 ? "gradient" : "solid")),
+    gradient: {
+      shade: "light",
+      type: "vertical",
+      shadeIntensity: 0.5,
+      gradientToColors: revenueData.map((d) =>
+        d.value > 50000 ? "#0641FC" : "#E5E7EB"
+      ),
+      inverseColors: false,
+      opacityFrom: 1,
+      opacityTo: 1,
+      stops: [0, 100],
+    },
+  },
+  xaxis: {
+    categories: revenueData.map((d) => d.day),
+    labels: { show: false },
+    axisBorder: { show: false },
+    axisTicks: { show: false },
+  },
+  yaxis: {
+    show: false,
+    max: 250000,
+  },
+  grid: { show: false },
+});
+
+const series = ref([
+  {
+    name: "Faturamento",
+    data: revenueData.map((d) => d.value),
+  },
+]);
 </script>
 
 <template>
@@ -23,15 +76,14 @@ const chartData = Array.from({ length: 30 }, (_, i) => ({
       <div class="text-green-600 text-sm font-semibold">+ 123,9%</div>
     </div>
 
-    <!-- Gráfico de barras -->
-    <div class="flex items-end justify-between h-24 gap-0.5 mb-2">
-      <div
-        v-for="(item, index) in chartData"
-        :key="index"
-        class="flex-1 rounded-t transition-all"
-        :class="item.highlighted ? 'bg-green-500' : 'bg-blue-500'"
-        :style="{ height: item.value + '%' }"
-      ></div>
+    <!-- Gráfico ApexCharts com gradiente -->
+    <div style="height: 140px" class="mb-2">
+      <VueApexCharts
+        type="bar"
+        height="140"
+        :options="chartOptions"
+        :series="series"
+      />
     </div>
 
     <div class="text-xs text-gray-500 text-center">
