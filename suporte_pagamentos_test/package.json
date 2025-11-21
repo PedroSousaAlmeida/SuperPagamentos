@@ -1,0 +1,30 @@
+{
+  "name": "suporte_pagamentos_test",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"json-server --watch db.json --port 3000\"",
+    "dev:vite": "vite",
+    "dev:api": "json-server --watch db.json --port 3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "apexcharts": "^5.3.6",
+    "axios": "^1.13.2",
+    "lucide-vue-next": "^0.554.0",
+    "vue": "^3.5.24",
+    "vue3-apexcharts": "^1.10.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "autoprefixer": "^10",
+    "concurrently": "^9.2.1",
+    "json-server": "1.0.0-beta.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.18",
+    "vite": "^7.2.4",
+    "vite-svg-loader": "^5.1.0"
+  }
+}

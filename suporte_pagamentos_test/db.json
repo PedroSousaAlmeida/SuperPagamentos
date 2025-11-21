@@ -1,0 +1,182 @@
+{
+  "tickets": [
+    {
+      "id": 1,
+      "titulo": "Erro no processamento de pagamento",
+      "descricao": "Cliente reportou erro ao tentar realizar pagamento via PIX",
+      "status": "aberto",
+      "prioridade": "alta",
+      "categoria": "pagamento",
+      "usuarioId": 1,
+      "pagamentoId": 101,
+      "criadoEm": "2025-11-18T10:30:00Z",
+      "atualizadoEm": "2025-11-18T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "titulo": "Estorno não processado",
+      "descricao": "Solicitação de estorno pendente há 3 dias",
+      "status": "em_andamento",
+      "prioridade": "media",
+      "categoria": "estorno",
+      "usuarioId": 2,
+      "pagamentoId": 102,
+      "criadoEm": "2025-11-17T14:20:00Z",
+      "atualizadoEm": "2025-11-19T09:15:00Z"
+    },
+    {
+      "id": 3,
+      "titulo": "Cobrança duplicada",
+      "descricao": "Cartão de crédito foi cobrado duas vezes pela mesma transação",
+      "status": "resolvido",
+      "prioridade": "alta",
+      "categoria": "cobranca",
+      "usuarioId": 3,
+      "pagamentoId": 103,
+      "criadoEm": "2025-11-16T08:45:00Z",
+      "atualizadoEm": "2025-11-18T16:30:00Z"
+    },
+    {
+      "id": 4,
+      "titulo": "Pagamento não identificado",
+      "descricao": "Boleto pago mas não aparece no sistema",
+      "status": "aberto",
+      "prioridade": "media",
+      "categoria": "pagamento",
+      "usuarioId": 4,
+      "pagamentoId": 104,
+      "criadoEm": "2025-11-19T11:00:00Z",
+      "atualizadoEm": "2025-11-19T11:00:00Z"
+    },
+    {
+      "id": 5,
+      "titulo": "Erro na integração com gateway",
+      "descricao": "Gateway de pagamento retornando erro 500",
+      "status": "em_andamento",
+      "prioridade": "critica",
+      "categoria": "tecnico",
+      "usuarioId": 1,
+      "pagamentoId": null,
+      "criadoEm": "2025-11-20T07:30:00Z",
+      "atualizadoEm": "2025-11-20T08:45:00Z"
+    }
+  ],
+  "pagamentos": [
+    {
+      "id": 101,
+      "valor": 150.00,
+      "metodo": "pix",
+      "status": "pendente",
+      "usuarioId": 1,
+      "criadoEm": "2025-11-18T10:25:00Z",
+      "processadoEm": null
+    },
+    {
+      "id": 102,
+      "valor": 320.50,
+      "metodo": "cartao_credito",
+      "status": "estornado",
+      "usuarioId": 2,
+      "criadoEm": "2025-11-17T14:00:00Z",
+      "processadoEm": "2025-11-18T16:30:00Z"
+    },
+    {
+      "id": 103,
+      "valor": 89.90,
+      "metodo": "cartao_credito",
+      "status": "aprovado",
+      "usuarioId": 3,
+      "criadoEm": "2025-11-16T08:30:00Z",
+      "processadoEm": "2025-11-16T08:31:00Z"
+    },
+    {
+      "id": 104,
+      "valor": 250.00,
+      "metodo": "boleto",
+      "status": "aguardando",
+      "usuarioId": 4,
+      "criadoEm": "2025-11-19T10:50:00Z",
+      "processadoEm": null
+    },
+    {
+      "id": 105,
+      "valor": 500.00,
+      "metodo": "pix",
+      "status": "aprovado",
+      "usuarioId": 5,
+      "criadoEm": "2025-11-15T12:00:00Z",
+      "processadoEm": "2025-11-15T12:02:00Z"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "email": "joao.silva@email.com",
+      "telefone": "(11) 98765-4321",
+      "cpf": "123.456.789-00"
+    },
+    {
+      "id": 2,
+      "nome": "Maria Santos",
+      "email": "maria.santos@email.com",
+      "telefone": "(21) 97654-3210",
+      "cpf": "987.654.321-00"
+    },
+    {
+      "id": 3,
+      "nome": "Pedro Oliveira",
+      "email": "pedro.oliveira@email.com",
+      "telefone": "(31) 96543-2109",
+      "cpf": "456.789.123-00"
+    },
+    {
+      "id": 4,
+      "nome": "Ana Costa",
+      "email": "ana.costa@email.com",
+      "telefone": "(41) 95432-1098",
+      "cpf": "789.123.456-00"
+    },
+    {
+      "id": 5,
+      "nome": "Carlos Ferreira",
+      "email": "carlos.ferreira@email.com",
+      "telefone": "(51) 94321-0987",
+      "cpf": "321.654.987-00"
+    }
+  ],
+  "comentarios": [
+    {
+      "id": 1,
+      "ticketId": 1,
+      "autorId": 1,
+      "autorNome": "João Silva",
+      "mensagem": "Tentei 3 vezes e sempre dá erro no último passo",
+      "criadoEm": "2025-11-18T11:00:00Z"
+    },
+    {
+      "id": 2,
+      "ticketId": 2,
+      "autorId": 2,
+      "autorNome": "Maria Santos",
+      "mensagem": "Aguardando retorno sobre o estorno",
+      "criadoEm": "2025-11-18T15:30:00Z"
+    },
+    {
+      "id": 3,
+      "ticketId": 2,
+      "autorId": 99,
+      "autorNome": "Suporte Técnico",
+      "mensagem": "Estorno foi processado e o valor será creditado em até 48h",
+      "criadoEm": "2025-11-19T09:15:00Z"
+    },
+    {
+      "id": 4,
+      "ticketId": 5,
+      "autorId": 99,
+      "autorNome": "Suporte Técnico",
+      "mensagem": "Identificamos o problema e estamos trabalhando na correção",
+      "criadoEm": "2025-11-20T08:45:00Z"
+    }
+  ]
+}
